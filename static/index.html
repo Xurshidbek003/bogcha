@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bog'cha Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/admin/style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-baby-carriage me-2"></i>KinderAdmin</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-dark">Bog'chalar Ro'yxati</h2>
+            <button class="btn btn-success" onclick="openModal()"><i class="fas fa-plus me-1"></i> Yangi qo'shish</button>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0 align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nomi</th>
+                            <th>Hudud</th>
+                            <th>Narxi</th>
+                            <th>Reyting</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kinderModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Bog'cha ma'lumotlari</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="kinderForm">
+                        <input type="hidden" id="kinderId">
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nomi</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Turi (xususiy/davlat)</label>
+                                <select class="form-select" id="type">
+                                    <option value="xususiy">Xususiy</option>
+                                    <option value="davlat">Davlat</option>
+                                    <option value="montessori">Montessori</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Viloyat/Shahar</label>
+                                <input type="text" class="form-control" id="region" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Tuman</label>
+                                <input type="text" class="form-control" id="district" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Narxi (so'm)</label>
+                                <input type="number" class="form-control" id="price" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Reyting</label>
+                                <input type="number" step="0.1" class="form-control" id="rating">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Qisqa tarif</label>
+                                <input type="text" class="form-control" id="short_description">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Rasm URL</label>
+                                <input type="text" class="form-control" id="image" placeholder="https://...">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Dasturlar (vergul bilan)</label>
+                                <input type="text" class="form-control" id="programs" placeholder="Montessori, English">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Tillar (vergul bilan)</label>
+                                <input type="text" class="form-control" id="languages" placeholder="english, russian">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Manzil (To'liq)</label>
+                                <input type="text" class="form-control" id="location_address">
+                            </div>
+                             <div class="col-md-6">
+                                <label class="form-label">Telefon</label>
+                                <input type="text" class="form-control" id="phone">
+                            </div>
+                             <div class="col-md-6">
+                                <label class="form-label">Yosh chegarasi</label>
+                                <input type="text" class="form-control" id="ages">
+                            </div>
+                             <div class="col-12">
+                                <label class="form-label">To'liq ta'rif</label>
+                                <textarea class="form-control" id="full_description" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bekor qilish</button>
+                    <button type="button" class="btn btn-primary" onclick="saveData()">Saqlash</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/admin.js"></script>
+</body>
+</html>
